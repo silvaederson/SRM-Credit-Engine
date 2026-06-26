@@ -1,0 +1,56 @@
+version: '3.8'
+
+services:
+  postgres:
+    image: postgres:15
+    container_name: srm-postgres
+    environment:
+      POSTGRES_DB: srm
+      POSTGRES_USER: admin
+      POSTGRES_PASSWORD: admin
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    networks:
+      - srm-network
+
+  redis:
+    image: redis:7
+    container_name: srm-redis
+    ports:
+      - "6379:6379"
+    networks:
+      - srm-network
+
+  prometheus:
+    image: prom/prometheus:latest
+    container_name: srm-prometheus
+    volumes:
+      - ./prometheus.yml:/etc/prometheus/prometheus.yml
+      - prometheus_data:/prometheus
+    ports:
+      - "9090:9090"
+    networks:
+      - srm-network
+
+  grafana:
+    image: grafana/grafana:latest
+    container_name: srm-grafana
+    environment:
+      GF_SECURITY_ADMIN_PASSWORD: admin
+    volumes:
+      - grafana_data:/var/lib/grafana
+    ports:
+      - "3000:3000"
+    networks:
+      - srm-network
+
+networks:
+  srm-network:
+    driver: bridge
+
+volumes:
+  postgres_data:
+  prometheus_data:
+  grafana_data:

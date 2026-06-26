@@ -1,0 +1,64 @@
+# Maven
+target/
+pom.xml.tag
+pom.xml.releaseBackup
+pom.xml.versionsBackup
+pom.xml.next
+release.properties
+dependency-reduced-pom.xml
+buildNumber.properties
+.mvn/timing.properties
+.mvn/wrapper/maven-wrapper.jar
+
+# IDE
+.idea/
+*.iml
+*.iws
+*.ipr
+.vscode/
+.classpath
+.project
+.settings/
+bin/
+*.swp
+*.swo
+*~
+
+# Logs
+logs/
+*.log
+
+# Application-specific
+application-local.yml
+application-dev.yml
+application-prod.yml
+*.properties
+*.orig
+*.tmp
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Docker
+docker-compose.override.yml
+
+# Test
+test-output/
+target/surefire-reports/
+target/jacoco.exec
+
+# Environment variables
+.env
+.env.local
+.env.*.local
+
+# Coverage
+coverage/
+.nyc_output/
+
+# Node (se tiver frontend)
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
